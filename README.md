@@ -11,6 +11,7 @@ sse/
 ├── simple_server.py       # minimal counter stream
 ├── resilient_server.py    # IDs, retry hints, resume, heartbeat, error handling
 ├── resilient_client.py    # Python client with reconnect/backoff
+├── raw_http_server.py     # SSE without FastAPI or third-party packages
 └── browser_client.html    # native browser EventSource client
 ```
 
@@ -31,6 +32,19 @@ curl -N http://127.0.0.1:8000/events
 
 Each event ends with two newlines. `curl -N` disables output buffering so each
 event is visible immediately.
+
+### Run SSE without FastAPI
+
+This version uses only Python's standard-library HTTP primitives:
+
+```bash
+python -m sse.raw_http_server
+curl -N http://127.0.0.1:8000/events
+```
+
+Read [`tutorial.md`](tutorial.md) for a line-by-line explanation of the wire
+format, polling comparisons, required fields, failure handling, production
+design and interview questions.
 
 ### Run the resilient example
 
