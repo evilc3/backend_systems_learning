@@ -46,6 +46,10 @@ Terminal 2:
 python -m sse.resilient_client
 ```
 
+Alternatively, open `sse/browser_client.html` to use the browser's native
+`EventSource` API. The examples allow any origin only to keep this local demo
+simple; production services should restrict CORS to trusted origins.
+
 Stop and restart the server. The client reconnects and sends `Last-Event-ID`,
 allowing the server to resume numbering after the last event it received.
 
@@ -58,4 +62,3 @@ allowing the server to resume numbering after the last event it received.
 See [`docs/standards`](docs/standards/README.md). It explains why SSE has a
 WHATWG specification rather than its own RFC and includes a script that fetches
 the authoritative SSE, HTTP Semantics, and HTTP/1.1 documents.
-
