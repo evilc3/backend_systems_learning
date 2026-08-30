@@ -55,6 +55,6 @@ async def events(
             "Cache-Control": "no-cache",
             "Connection": "keep-alive",
             "X-Accel-Buffering": "no",
+            "Access-Control-Allow-Origin": "*",  # local browser demo only
         },
     )
-
