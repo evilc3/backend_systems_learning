@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head><meta charset="utf-8"><title>SSE browser client</title></head>
+  <body>
+    <h1>Server-Sent Events</h1>
+    <pre id="log"></pre>
+    <script>
+      const log = document.querySelector("#log");
+      const source = new EventSource("http://127.0.0.1:8000/events");
+
+      source.onmessage = (event) => {
+        log.textContent += `message ${event.lastEventId}: ${event.data}\n`;
+      };
+      source.addEventListener("update", (event) => {
+        log.textContent += `update ${event.lastEventId}: ${event.data}\n`;
+      });
+      source.onerror = () => {
+        log.textContent += "connection lost; EventSource will reconnect\n";
+      };
+    </script>
+  </body>
+</html>
+
