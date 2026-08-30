@@ -24,6 +24,6 @@ async def events() -> StreamingResponse:
         headers={
             "Cache-Control": "no-cache",
             "X-Accel-Buffering": "no",
+            "Access-Control-Allow-Origin": "*",  # local browser demo only
         },
     )
-
